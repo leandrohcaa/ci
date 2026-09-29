@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
 from app.core.db import get_db
+from app.core.params import PositiveId
 from app.models.user import User
 from app.schemas.users import UserCreate, UserRead, UserUpdate
 
@@ -34,7 +35,7 @@ def create(
 
 @router.get("/{id}", response_model=UserRead)
 def get_by_id(
-    id: int,
+    id: PositiveId,
     db: Session = Depends(get_db),
 ) -> UserRead:
     user = db.query(User).get(id)
@@ -47,7 +48,7 @@ def get_by_id(
 
 @router.patch("/{id}", response_model=UserRead)
 def update(
-    id: int,
+    id: PositiveId,
     payload: UserUpdate,
     db: Session = Depends(get_db),
 ) -> UserRead:
@@ -67,7 +68,7 @@ def update(
 
 @router.delete("/{id}")
 def delete(
-    id: int,
+    id: PositiveId,
     db: Session = Depends(get_db),
 ) -> dict:
     user = db.query(User).get(id)

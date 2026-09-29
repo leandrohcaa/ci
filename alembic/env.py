@@ -12,6 +12,8 @@ load_dotenv()
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
+from app.models.course import Course
+from app.models.enrollment import Enrollment
 from app.models.user import User
 
 # this is the Alembic Config object, which provides

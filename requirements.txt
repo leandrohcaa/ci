@@ -1,8 +1,9 @@
 fastapi[standard]
-SQLAlchemy
+SQLAlchemy[asyncio]
 alembic
 python-dotenv
 psycopg2-binary
+asyncpg
 black
 isort
 pytest
